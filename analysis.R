@@ -81,8 +81,8 @@ ggplot() +
   # Add points for each well, colored by type
   geom_sf(data = combined_data_sf, aes(color = Type), size = 0.5, alpha = 0.25) +
   
-  # Make the map pretty with colors and labels
-  scale_fill_viridis_d(option="viridis") +
+  # Apply unified ColorBrewer Dark2 palette across spatial and statistical plots
+  scale_color_manual(values = c("Oil Well" = "#D95F02", "Water Well" = "#1B9E77")) +
   labs(
     color = "Well Type",
     title = "Spatial Distribution of Orphaned Oil Wells and Water Wells in the United States",
@@ -90,7 +90,7 @@ ggplot() +
     y = "Latitude"
   ) +
   # Make the legend points bigger so they're easier to see
-  guides(color = guide_legend(override.aes = list(size = 4))) +
+  guides(color = guide_legend(override.aes = list(size = 4, alpha = 0.85))) +
   theme_classic() +
   coord_sf()
 
@@ -268,14 +268,15 @@ combined_data <- combined_data %>%
 # Darker colors for jittered points
 ggplot(combined_data, aes(x = Group, y = Methane, fill = Group)) +
   geom_boxplot() + 
-  scale_color_viridis_d(option = "viridis") +
+  scale_fill_manual(values = c("Random Sample" = "#64748B", "Water Wells with Oil Well within 5KM" = "#1B9E77")) +
   labs(
     title = "Methane Comparison: Random Wells vs. Water Wells with Oil Well in 5KM",
     x = "Groups",
     y = "Methane Concentration (mg/L)"
   ) +
   scale_y_log10() +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 
 # Chunk 10
 # Perform a Mann-Whitney U test

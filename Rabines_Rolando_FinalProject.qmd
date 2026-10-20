@@ -304,14 +304,15 @@ combined_data <- combined_data %>%
 # Darker colors for jittered points
 ggplot(combined_data, aes(x = Group, y = Methane, fill = Group)) +
   geom_boxplot() + 
-  scale_color_viridis_d(option = "viridis") +
+  scale_fill_manual(values = c("Random Sample" = "#64748B", "Water Wells with Oil Well within 5KM" = "#1B9E77")) +
   labs(
     title = "Methane Comparison: Random Wells vs. Water Wells with Oil Well in 5KM",
     x = "Groups",
     y = "Methane Concentration (mg/L)"
   ) +
   scale_y_log10() +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 ```
 
 ### Hypothesis Testing - Comparing Methane Levels

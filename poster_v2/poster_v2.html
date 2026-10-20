@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Like Mixing Oil with Water — ENV 170 Research Poster (Redesigned)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: 2400px 1800px;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    width: 2400px;
+    height: 1800px;
+    overflow: hidden;
+    background: #FAF9F5;
+    color: #141413;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 52px 64px 44px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Header Bar */
+  .poster-header {
+    display: grid;
+    grid-template-columns: 1fr 560px;
+    gap: 48px;
+    align-items: end;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #141413;
+  }
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1B9E77;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .kicker span.sep {
+    color: #A1A09A;
+  }
+  h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 46px;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #141413;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #3D3C38;
+  }
+  .author-block {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .author-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #141413;
+    letter-spacing: -0.01em;
+  }
+  .author-affil {
+    font-size: 14px;
+    color: #575652;
+    line-height: 1.4;
+  }
+  .author-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #787771;
+    margin-top: 2px;
+  }
+
+  /* Empirical Metrics Strip */
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 18px 0;
+    border-bottom: 1px solid #DCDAD2;
+  }
+  .metric-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-right: 20px;
+    border-right: 1px solid #E6E4DC;
+  }
+  .metric-item:last-child {
+    border-right: none;
+  }
+  .metric-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: #141413;
+    white-space: nowrap;
+  }
+  .metric-val .accent-orange { color: #D95F02; }
+  .metric-val .accent-teal { color: #1B9E77; }
+  .metric-val .accent-purple { color: #7570B3; }
+  .metric-desc {
+    font-size: 13px;
+    line-height: 1.38;
+    color: #575652;
+  }
+  .metric-desc strong {
+    color: #141413;
+    font-weight: 600;
+    display: block;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+
+  /* Main 3-Column Editorial Grid */
+  .poster-grid {
+    display: grid;
+    grid-template-columns: 440px 1fr 680px;
+    gap: 44px;
+    flex: 1;
+    padding-top: 24px;
+    min-height: 0;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+  }
+  .col-left {
+    padding-right: 36px;
+    border-right: 1px solid #DCDAD2;
+  }
+  .col-center {
+    padding-right: 36px;
+    border-right: 1px solid #DCDAD2;
+  }
+
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #787771;
+    margin-bottom: 6px;
+  }
+  h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #141413;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  p.body-text {
+    font-size: 14.5px;
+    line-height: 1.56;
+    color: #2E2E2B;
+    margin-bottom: 12px;
+  }
+  p.body-text:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Callout Research Question */
+  .rq-callout {
+    border-left: 3px solid #1B9E77;
+    padding: 12px 0 12px 18px;
+    margin: 6px 0;
+    background: rgba(27, 158, 119, 0.04);
+  }
+  .rq-callout .rq-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1B9E77;
+    margin-bottom: 5px;
+  }
+  .rq-callout p {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17.5px;
+    font-style: italic;
+    line-height: 1.42;
+    color: #141413;
+  }
+
+  /* Methods Pipeline Table */
+  .pipeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 6px;
+  }
+  .pipeline-step {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1B9E77;
+    background: rgba(27, 158, 119, 0.1);
+    border-radius: 4px;
+    width: 24px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .step-body {
+    font-size: 13.5px;
+    line-height: 1.46;
+    color: #2E2E2B;
+  }
+  .step-body strong {
+    color: #141413;
+    font-weight: 600;
+  }
+  .step-body code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: #EFECE4;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #141413;
+  }
+
+  /* Figure Cards (Clean Tufte White Surface) */
+  .fig-block {
+    background: #FFFFFF;
+    border: 1px solid #DFDDD5;
+    border-radius: 6px;
+    padding: 20px 24px 18px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .fig-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #F0EFEA;
+    padding-bottom: 10px;
+  }
+  .fig-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .fig-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #D95F02;
+  }
+  .fig-num.teal { color: #1B9E77; }
+  .fig-num.purple { color: #7570B3; }
+  .fig-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: #141413;
+    line-height: 1.2;
+  }
+  .fig-subtitle {
+    font-size: 13px;
+    color: #575652;
+  }
+  .fig-stat-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    background: #F6F5F0;
+    border: 1px solid #E2E0D8;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #2E2E2B;
+    white-space: nowrap;
+  }
+
+  /* Legend Pills Inline */
+  .inline-legend {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #3D3C38;
+  }
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .leg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .leg-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid #333;
+    display: inline-block;
+  }
+
+  /* Figure + Margin Caption Layout */
+  .fig-with-margin {
+    display: grid;
+    grid-template-columns: 1fr 225px;
+    gap: 20px;
+    align-items: center;
+  }
+  .fig-img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .fig-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .margin-caption {
+    font-size: 12.8px;
+    line-height: 1.5;
+    color: #4A4945;
+    border-left: 2px solid #E5E3DC;
+    padding-left: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .margin-caption strong {
+    color: #141413;
+    font-weight: 600;
+  }
+  .margin-stat-box {
+    background: #FAF9F5;
+    border: 1px solid #E5E3DC;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: #141413;
+  }
+
+  /* Summary Table in Center Bottom */
+  .stat-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .stat-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #575652;
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1.5px solid #141413;
+    background: #F4F2EB;
+  }
+  .stat-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #E5E3DC;
+    color: #2E2E2B;
+  }
+  .stat-table td.mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #141413;
+  }
+
+  /* Discussion & References */
+  .discussion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 6px;
+  }
+  .disc-card {
+    background: #F4F2EB;
+    border-left: 2.5px solid #141413;
+    padding: 10px 14px;
+  }
+  .disc-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #141413;
+    margin-bottom: 4px;
+  }
+  .disc-card p {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #4A4945;
+  }
+
+  .refs-list {
+    font-size: 11.2px;
+    line-height: 1.42;
+    color: #575652;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Footer */
+  .poster-footer {
+    border-top: 1px solid #DCDAD2;
+    padding-top: 12px;
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #787771;
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="poster-header">
+    <div>
+      <div class="kicker">
+        <span>TUFTS UNIVERSITY · ENV 170 ENVIRONMENTAL DATA VISUALIZATION</span>
+        <span class="sep">·</span>
+        <span>GEOSPATIAL HYDROGEOLOGY &amp; NON-PARAMETRIC INFERENCE</span>
+      </div>
+      <h1>Like Mixing Oil with Water: <em>Assessing Groundwater Methane Near Orphaned Oil &amp; Gas Wells in the United States</em></h1>
+    </div>
+    <div class="author-block">
+      <div class="author-name">Rolando H. Rabines</div>
+      <div class="author-affil">Department of Mechanical Engineering (B.S. Human Factors Engineering)<br>School of Engineering, Tufts University · Medford, MA</div>
+      <div class="author-meta">CRS: EPSG:4326 (WGS 84) · R (sf, nngeo, tidyverse, RColorBrewer Dark2)</div>
+    </div>
+  </header>
+
+  <!-- EMPIRICAL SUMMARY STRIP -->
+  <section class="metrics-strip">
+    <div class="metric-item">
+      <div class="metric-val"><span class="accent-orange">117,672</span></div>
+      <div class="metric-desc">
+        <strong>Documented Orphaned Wells</strong>
+        Unplugged abandoned U.S. oil &amp; gas wells analyzed from the USGS national dataset (Grove &amp; Merrill, 2022).
+      </div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-val"><span class="accent-teal">2,062</span></div>
+      <div class="metric-desc">
+        <strong>Sampled Drinking-Water Wells</strong>
+        Hydrogeologic groundwater methane observations across 16 principal U.S. aquifers (McMahon et al., 2017).
+      </div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-val">U = 702.5 <span style="font-size:16px;color:#575652;">(p = 0.579)</span></div>
+      <div class="metric-desc">
+        <strong>Mann–Whitney U Test (&lt; 5 km vs. Random)</strong>
+        Higher upper-quartile methane near orphaned wells, but difference vs. national random sample is not statistically significant.
+      </div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-val"><span class="accent-purple">ρ = −0.014</span> <span style="font-size:16px;color:#575652;">(p = 0.822)</span></div>
+      <div class="metric-desc">
+        <strong>Spearman Rank Correlation (5–25 km)</strong>
+        Weak inverse distance decay across 5 km, 10 km, and 25 km buffers; surface distance alone does not govern contamination.
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN 3-COLUMN EDITORIAL BODY -->
+  <main class="poster-grid">
+
+    <!-- COLUMN 1: CONTEXT, HYPOTHESIS, GEOSPATIAL PIPELINE & REFERENCES -->
+    <div class="col col-left">
+      <div>
+        <div class="sec-label">01 · Motivation &amp; Environmental Context</div>
+        <h2>The Unplugged Legacy of U.S. Oil &amp; Gas Extraction</h2>
+        <p class="body-text">
+          Across the United States, more than <strong>117,000 documented orphaned oil and gas wells</strong>—and an estimated hundreds of thousands of undocumented historical boreholes—sit unplugged with no solvent operator of record. As steel casings corrode and cement annuli fracture over decades, abandoned wellbores can act as vertical conduits connecting deep hydrocarbon-bearing formations with overlying fresh drinking-water aquifers.
+        </p>
+        <p class="body-text">
+          While dissolved methane (CH<sub>4</sub>) in groundwater is non-toxic to ingest, concentrations exceeding <strong>10–28 mg/L</strong> pose acute exsolution, asphyxiation, and explosion hazards in enclosed domestic water systems, and oxidize into potent greenhouse emissions.
+        </p>
+      </div>
+
+      <div class="rq-callout">
+        <div class="rq-title">Primary Research Question &amp; Hypothesis</div>
+        <p>
+          Do groundwater monitoring wells located within 5 km to 25 km of documented orphaned oil and gas wells exhibit significantly elevated dissolved methane concentrations compared to the national baseline?
+        </p>
+      </div>
+
+      <div>
+        <div class="sec-label">02 · Data Sources &amp; Spatial Pipeline</div>
+        <h2>Coordinate Standardization &amp; Nearest-Neighbor Buffering</h2>
+        <div class="pipeline-list">
+          <div class="pipeline-step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>USGS Orphaned Well Database:</strong> Filtered <code>DerelictWell.csv</code> (<em>N</em> = 117,672) for verified geographic coordinates across 27 oil-producing states.
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>USGS NAWQA Aquifer Methane Survey:</strong> Standardized DMS coordinates in <code>McMahon_Table1.csv</code> (<em>N</em> = 2,062) to decimal degrees, replacing censored non-detects (<code>&lt; 0.001</code> mg/L) with numeric detection thresholds.
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Geodesic Spatial Join (<code>sf</code> + <code>nngeo</code>):</strong> Projected both point layers to <code>EPSG:4326</code> (WGS 84) and computed exact k-nearest-neighbor geodesic distances via <code>st_nn(maxdist = 5000 | 10000 | 25000)</code>.
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <strong>Non-Parametric Inference:</strong> Because aquifer methane spans five orders of magnitude (10<sup>&minus;3</sup> to &gt;30 mg/L) with heavy right-skew, we evaluate distributions on a log<sub>10</sub> scale using the <strong>Mann–Whitney U test</strong> and <strong>Spearman's rank correlation (&rho;)</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-label">05 · Primary Data &amp; Literature References</div>
+        <div class="refs-list">
+          <div><strong>1. Grove, C. &amp; Merrill, M. D. (2022).</strong> <em>United States documented unplugged orphaned oil and gas well dataset.</em> U.S. Geological Survey Data Release. https://doi.org/10.5066/P91PJETI</div>
+          <div><strong>2. McMahon, P. B., et al. (2017).</strong> <em>Methane and benzene in drinking-water wells overlying the Eagle Ford, Fayetteville, and Haynesville Shale Hydrocarbon Production Areas.</em> Environ. Sci. Technol., 51(12), 6727–6734.</div>
+          <div><strong>3. Natural Earth (2023).</strong> <em>1:50m Cultural Vectors — Admin 1 States &amp; Provinces</em> (<code>ne_50m_admin_1_states_provinces.shp</code>).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: NATIONAL SPATIAL DISTRIBUTION & HYDROGEOLOGICAL SYNTHESIS -->
+    <div class="col col-center">
+      <div class="fig-block" style="flex: 1; justify-content: space-between;">
+        <div class="fig-header">
+          <div class="fig-title-group">
+            <span class="fig-num">Figure 1 · National Spatial Co-Occurrence (EPSG:4326)</span>
+            <div class="fig-title">Spatial Distribution of Documented Orphaned Oil Wells &amp; Sampled Water Wells</div>
+            <div class="fig-subtitle">Continental United States with repositioned Alaska &amp; Hawaii insets (<em>N</em> = 117,672 oil wells; <em>N</em> = 2,062 water wells)</div>
+          </div>
+          <div class="inline-legend">
+            <span class="leg-item"><span class="leg-dot" style="background:#D95F02;"></span> Orphaned Oil Well</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#1B9E77;"></span> Sampled Water Well</span>
+          </div>
+        </div>
+
+        <div class="fig-img-wrap" style="height: 560px; padding: 6px 0;">
+          <img src="fig1_map.png" alt="Spatial Distribution Map">
+        </div>
+
+        <div style="border-top: 1px solid #ECEAE2; padding-top: 14px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; align-items: start;">
+          <div>
+            <div class="sec-label" style="margin-bottom: 4px;">Cartographic &amp; Regional Interpretation</div>
+            <p style="font-size: 13.2px; line-height: 1.5; color: #3D3C38;">
+              Documented orphaned wells cluster intensely along historical extraction corridors: the <strong>Appalachian Basin</strong> (PA, WV, OH, NY, KY), the <strong>Mid-Continent &amp; Permian Basins</strong> (OK, KS, TX, LA), the <strong>Illinois &amp; Michigan Basins</strong>, and <strong>California's Central Valley &amp; Los Angeles Basin</strong>. While USGS NAWQA water sampling provides broad national coverage, spatial overlap between both monitoring networks is concentrated in Pennsylvania, New York, Texas, Oklahoma, and California.
+            </p>
+          </div>
+          <div>
+            <div class="sec-label" style="margin-bottom: 4px;">Proximity Buffer Summary</div>
+            <table class="stat-table" style="margin-top: 2px;">
+              <thead>
+                <tr>
+                  <th>Buffer Radius</th>
+                  <th>Median CH₄</th>
+                  <th>IQR Spread</th>
+                  <th>Max Obs.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>&le; 5 km</strong> <span style="color:#1B9E77;">(●)</span></td>
+                  <td class="mono">0.150 mg/L</td>
+                  <td class="mono">0.008–2.85</td>
+                  <td class="mono">23.4 mg/L</td>
+                </tr>
+                <tr>
+                  <td><strong>&le; 10 km</strong> <span style="color:#D95F02;">(●)</span></td>
+                  <td class="mono">0.092 mg/L</td>
+                  <td class="mono">0.009–2.01</td>
+                  <td class="mono">21.8 mg/L</td>
+                </tr>
+                <tr>
+                  <td><strong>&le; 25 km</strong> <span style="color:#7570B3;">(●)</span></td>
+                  <td class="mono">0.023 mg/L</td>
+                  <td class="mono">0.007–1.20</td>
+                  <td class="mono">28.9 mg/L</td>
+                </tr>
+                <tr>
+                  <td><strong>Random Baseline</strong></td>
+                  <td class="mono">0.009 mg/L</td>
+                  <td class="mono">0.004–0.021</td>
+                  <td class="mono">17.0 mg/L</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section in Center Column: Confounders & Discussion -->
+      <div style="margin-top: 20px;">
+        <div class="sec-label">04 · Hydrogeological Synthesis &amp; Policy Implications</div>
+        <h2>Why Surface Proximity Alone Does Not Predict Aquifer Methane</h2>
+        <div class="discussion-grid">
+          <div class="disc-card" style="border-left-color: #1B9E77;">
+            <h4>1. Biogenic vs. Thermogenic Methane Origins</h4>
+            <p>
+              McMahon et al. (2017) demonstrated through isotopic analysis (&delta;<sup>13</sup>C-CH<sub>4</sub>) that over <strong>90% of methane detections</strong> in principal U.S. aquifers are <em>microbially generated (biogenic)</em> in anoxic subsurface strata rather than thermogenic gas migrating from deep oil reservoirs.
+            </p>
+          </div>
+          <div class="disc-card" style="border-left-color: #D95F02;">
+            <h4>2. Subsurface Depth &amp; Wellbore Integrity Confounders</h4>
+            <p>
+              2D Euclidean surface distance omits vertical separation between screen depth and hydrocarbon formations, local hydraulic head gradients, fault permeability, and whether an orphaned well retains intact surface casing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: STATISTICAL DISTRIBUTIONS WITH MARGIN CAPTIONS -->
+    <div class="col col-right">
+
+      <!-- FIGURE 2: RANDOM VS <5KM -->
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title-group">
+            <span class="fig-num teal">Figure 2 · Baseline Comparison (Log₁₀ Scale)</span>
+            <div class="fig-title">National Random Sample vs. Water Wells Within 5 km of an Orphaned Well</div>
+          </div>
+          <div class="fig-stat-pill">Mann–Whitney U = 702.5 · p = 0.5789</div>
+        </div>
+        <div class="fig-with-margin">
+          <div class="fig-img-wrap" style="height: 365px;">
+            <img src="fig2_comparison.png" alt="Boxplot comparing random sample vs wells within 5 km">
+          </div>
+          <div class="margin-caption">
+            <div class="margin-stat-box">
+              <strong>Test Specification:</strong><br>
+              Two-sided Wilcoxon–Mann–Whitney<br>
+              <em>W</em> = 702.5, <em>p</em> = 0.5789<br>
+              Result: <em>p</em> &gt; 0.05 (Fail to reject H<sub>0</sub>)
+            </div>
+            <p>
+              <strong>Visual vs. Statistical Divergence:</strong> Drinking-water wells within <strong>5 km</strong> of an orphaned oil well (<span style="color:#1B9E77;font-weight:600;">emerald box</span>) exhibit an order-of-magnitude higher visual median (&approx; 0.15 mg/L) and a wider interquartile range reaching 2.85 mg/L compared to the national random sample (<span style="color:#64748B;font-weight:600;">slate box</span>, median &approx; 0.009 mg/L).
+            </p>
+            <p>
+              However, because a large fraction of wells in both groups remain near the 0.001 mg/L detection floor, the overall rank-sum distribution does not achieve statistical significance (<em>p</em> = 0.579).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIGURE 3: DISTANCE DECAY ACROSS 5KM, 10KM, 25KM -->
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title-group">
+            <span class="fig-num purple">Figure 3 · Multi-Buffer Distance Gradient (Log₁₀ Scale)</span>
+            <div class="fig-title">Dissolved Methane Concentration Across 5 km, 10 km, and 25 km Proximity Buffers</div>
+          </div>
+          <div class="fig-stat-pill">Spearman ρ = −0.0137 · p = 0.8222</div>
+        </div>
+        <div class="fig-with-margin">
+          <div class="fig-img-wrap" style="height: 385px;">
+            <img src="fig3_buffers.png" alt="Boxplot of methane concentration across 5km, 10km, and 25km buffers">
+          </div>
+          <div class="margin-caption">
+            <div class="margin-stat-box">
+              <strong>Rank Correlation:</strong><br>
+              Spearman's &rho; = &minus;0.0137<br>
+              <em>p</em>-value = 0.8222<br>
+              Palette: ColorBrewer <code>Dark2</code>
+            </div>
+            <p>
+              <strong>Monotonic Decay in Medians:</strong> Across expanding geodesic buffers, the median concentration among detected wells steps downward from <strong>0.15 mg/L</strong> (<code>5KM</code>) to <strong>0.092 mg/L</strong> (<code>10KM</code>) and <strong>0.023 mg/L</strong> (<code>25KM</code>).
+            </p>
+            <p>
+              <strong>Heavy Censoring at Detection Limit:</strong> Jittered observations along the 0.001 mg/L baseline reveal why Spearman's &rho; = &minus;0.0137 (<em>p</em> = 0.822) is near zero: uncontaminated wells dominate all three distance rings, masking localized point-source plumes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="poster-footer">
+    <div>Redesigned Applying Principles from Tufts ENV 170 (Prof. Ben Davies) &amp; Wilke (2019) <em>Fundamentals of Data Visualization</em> · Unified ColorBrewer Dark2 Palette · High Data-to-Ink Ratio</div>
+    <div>rolandorabines.com/lab · github.com/rolandorrrr/methane-aquifer-visualization</div>
+  </footer>
+
+</body>
+</html>
